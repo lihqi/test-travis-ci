@@ -1,0 +1,21 @@
+language: node_js
+
+node_js: "11"
+
+branches:
+  only:
+    - master
+git:
+  quite: true
+  depth: 1
+  submodules: false
+cache: yarn
+install: yarn
+script: yarn build
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_TOKEN
+  local-dist: ./build/
+  on:
+    branch: master
